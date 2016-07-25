@@ -15,7 +15,7 @@ setup(
     license='MIT',  # example license
     description='A simple Django app to create profiles of field based permmissions including hide, read-only and read & write.',
     long_description=README,
-    url='https://www.mpf.gov.ar/',
+    url='https://github.com/ezenechea/django-admin-field-permmissions',
     author=['Ismael Bejarano','Ezequiel Aurtenechea','Ezequiel Cascardo'],
     author_email='mail@example.com',
     classifiers=[
