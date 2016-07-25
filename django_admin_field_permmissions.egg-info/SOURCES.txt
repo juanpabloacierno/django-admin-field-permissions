@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.py
+dafpermmissions/__init__.py
+dafpermmissions/admin.py
+dafpermmissions/apps.py
+dafpermmissions/forms.py
+dafpermmissions/models.py
+dafpermmissions/tests.py
+dafpermmissions/views.py
+dafpermmissions/migrations/0001_initial.py
+dafpermmissions/migrations/__init__.py
+django_admin_field_permmissions.egg-info/PKG-INFO
+django_admin_field_permmissions.egg-info/SOURCES.txt
+django_admin_field_permmissions.egg-info/dependency_links.txt
+django_admin_field_permmissions.egg-info/top_level.txt
