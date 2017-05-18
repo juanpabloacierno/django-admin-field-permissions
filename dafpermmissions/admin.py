@@ -90,7 +90,7 @@ class PerfilAdmin(admin.ModelAdmin):
     def get_childs(self,):
         models = []
         registry = admin.site._registry
-        for a,b in registry.iteritems():
+        for a,b in registry.items():
             if type(b).__base__ is DAFPermAdmin:
                 models.append(a)
                 for inline in b.inlines:
@@ -152,7 +152,10 @@ class PerfilAdmin(admin.ModelAdmin):
 
     def response_add(self, request, obj, post_url_continue=None):
         if '_addanother' not in request.POST and '_popup' not in request.POST:
+            mutable = request.POST._mutable
+            request.POST._mutable = True
             request.POST['_continue'] = 1
+            request.POST._mutable = mutable
         return super(PerfilAdmin, self).response_add(request, obj,
                                                    post_url_continue)
     list_display = ('nombre',)
