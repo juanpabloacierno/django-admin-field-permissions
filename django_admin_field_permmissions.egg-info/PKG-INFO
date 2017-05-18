@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
-Name: django-admin-field-permmissions
-Version: 0.1
+Name: django-admin-field-permissions
+Version: 0.2
 Summary: A simple Django app to conduct Web-based polls.
 Home-page: https://www.mpf.gov.ar/
 Author: ['Ismael Bejarano', 'Ezequiel Aurtenechea', 'Ezequiel Cascardo']
