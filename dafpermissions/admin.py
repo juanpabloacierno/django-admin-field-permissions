@@ -37,7 +37,7 @@ def filter_fieldsets(fieldsets, model, predicate):
                 result.append((name, field_dict))
     else:
         fields= ((None, {"fields": []}),)
-        campos = model._meta.get_all_field_names()
+        campos = model._meta.get_fields()
         for campo in campos:
             fields[0][1]['fields'].append(campo)
         for name, field_dict in fields:
