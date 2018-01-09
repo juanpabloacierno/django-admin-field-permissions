@@ -8,14 +8,14 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-admin-field-permissions',
+    name='dafpermissions',
     version='0.1',
     packages=find_packages(),
     include_package_data=True,
     license='MIT',  # example license
     description='A simple Django app to create profiles of field based permissions including hide, read-only and read & write.',
     long_description=README,
-    url='https://github.com/ezenechea/django-admin-field-permissions',
+    url='https://github.com/ezenechea/dafpermissions',
     author=['Ismael Bejarano','Ezequiel Aurtenechea','Ezequiel Cascardo'],
     author_email='mail@example.com',
     classifiers=[
