@@ -18,8 +18,15 @@ def get_user_profile(user):
 def filter_fieldsets(fieldsets, model, predicate):
     """Remueve los campos que no cumplen el predicado"""
 
+    #import pdb; pdb.set_trace()
+        
     def clean_fields(fields):
-        return [field for field in fields if predicate(field)]
+        a = []
+        for field in fields:
+            if predicate(field):
+                a.append(field)
+        return a
+        #return [field for field in fields if predicate(field)]
 
     def clean_field_dict(field_dict):
         if 'fields' in field_dict:
@@ -39,7 +46,7 @@ def filter_fieldsets(fieldsets, model, predicate):
         fields= ((None, {"fields": []}),)
         campos = model._meta.get_fields()
         for campo in campos:
-            fields[0][1]['fields'].append(campo)
+            fields[0][1]['fields'].append(campo.name)
         for name, field_dict in fields:
             field_dict = clean_field_dict(field_dict)
             if field_dict:
@@ -63,9 +70,9 @@ def get_user_readonly_fields(user, model):
 
 
 class DAFPermAdmin(object):
+    
 
     def get_fieldsets(self, request, obj=None):
-         
         if obj is None or get_user_profile(request.user) is None or  request.user.is_superuser:
             return super(DAFPermAdmin, self).get_fieldsets(request, obj)
         fields = get_user_fields(request.user, self.model.__name__)

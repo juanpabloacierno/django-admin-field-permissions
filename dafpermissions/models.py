@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
 
@@ -31,13 +30,13 @@ class Perfil(models.Model):
         for campo in campos:
             self.campos.create(perfil=self, tabla=tabla, campo=campo, permiso='L')
 
-    def __unicode__(self):
-        return u"%s" % (self.nombre or '', )
+    def __str__(self):
+        return "%s" % (self.nombre or '', )
 
 
     class Meta:
-        verbose_name = u'Perfil'
-        verbose_name_plural = u'Perfiles'
+        verbose_name = 'Perfil'
+        verbose_name_plural = 'Perfiles'
 
 
 pre_delete.connect(perfil_cleanup, sender=Perfil)
@@ -50,8 +49,8 @@ class CampoPermiso(models.Model):
     permiso = models.CharField(max_length=1, verbose_name=u"Permiso",
                                choices=(('N', 'No visible'), ('L', 'Sólo Lectura'), ('E', 'Lectura y Escritura')), blank=True, null=True)
 
-    def __unicode__(self):
-        return u"%s-%s-%s" % (self.tabla, self.campo, self.permiso)
+    def __str__(self):
+        return "%s-%s-%s" % (self.tabla, self.campo, self.permiso)
 
 def get_model_fields(model, excluded=None):
     """Devuelve la lista de campos de un modelo"""
