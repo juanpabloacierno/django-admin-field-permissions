@@ -15,36 +15,53 @@ def get_user_profile(user):
         if 'dafpermissions.'+ perfil.slug in perms:
             return perfil.slug
 
-def filter_fieldsets(fieldsets, model, predicate):
-    """Remueve los campos que no cumplen el predicado"""
-
-    #import pdb; pdb.set_trace()
-        
-    def clean_fields(fields):
-        a = []
-        for field in fields:
-            if predicate(field):
-                a.append(field)
-        return a
-        #return [field for field in fields if predicate(field)]
-
+def filter_fieldsets(model_admin, user_fields):
     def clean_field_dict(field_dict):
         if 'fields' in field_dict:
-            fields = clean_fields(field_dict['fields'])
+            fields =[]
+            for field in field_dict['fields']:
+                if isinstance(field, tuple):
+                    print(field)
+                    p = field
+                    f=[]
+                    for field in p:
+                        if field in user_fields:  
+                            if model_admin.exclude is not None:
+                                if field in model_admin.exclude:
+                                    continue
+
+                            if model_admin.fields is None:
+                                f.append(field)
+                            else:
+                                if  field in model_admin.fields:
+                                    f.append(field)
+                    fields.append(tuple(f)) 
+                else:
+                    if field in user_fields:  
+                        if model_admin.exclude is not None:
+                            if field in model_admin.exclude:
+                                continue
+
+                        if model_admin.fields is None:
+                            fields.append(field)
+                        else:
+                            if  field in model_admin.fields:
+                                fields.append(field)
+
             if fields:
                 field_dict['fields'] = fields
                 return field_dict
         return {}
 
     result = []
-    if fieldsets:
-        for name, field_dict in fieldsets:
+    if model_admin.fieldsets:
+        for name, field_dict in model_admin.fieldsets:
             field_dict = clean_field_dict(field_dict)
             if field_dict:
                 result.append((name, field_dict))
     else:
         fields= ((None, {"fields": []}),)
-        campos = model._meta.get_fields()
+        campos = model_admin.model._meta.get_fields()
         for campo in campos:
             fields[0][1]['fields'].append(campo.name)
         for name, field_dict in fields:
@@ -76,7 +93,8 @@ class DAFPermAdmin(object):
         if obj is None or get_user_profile(request.user) is None or  request.user.is_superuser:
             return super(DAFPermAdmin, self).get_fieldsets(request, obj)
         fields = get_user_fields(request.user, self.model.__name__)
-        return filter_fieldsets(self.fieldsets, self.model, lambda x: x in fields)
+        return filter_fieldsets(self, fields)
+        #return filter_fieldsets(self.fieldsets, self.model, lambda x: x in fields)
 
     def get_readonly_fields(self, request, obj=None):
         if obj is None or get_user_profile(request.user) is None or request.user.is_superuser:
