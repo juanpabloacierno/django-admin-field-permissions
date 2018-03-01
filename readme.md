@@ -13,7 +13,7 @@ Quick start
 
     INSTALLED_APPS = [
         ...
-        'dafpermissions',
+        'dafpermission',
     ]
 
 2. Run `python manage.py migrate` to create the polls models.
@@ -22,7 +22,7 @@ Quick start
 3. Include the DAFPermAdmin in your project admin.py like this::
 
     ...
-    from dafpermissions.admin import DAFPermAdmin
+    from dafpermission.admin import DAFPermAdmin
     ...
 
 4. Add DAFPermAdmin to your ModelAdmin or InlineModel class declaration like this::

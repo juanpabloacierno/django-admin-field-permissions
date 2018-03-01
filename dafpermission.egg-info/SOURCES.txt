@@ -1,0 +1,17 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.py
+dafpermission/__init__.py
+dafpermission/admin.py
+dafpermission/apps.py
+dafpermission/forms.py
+dafpermission/models.py
+dafpermission/tests.py
+dafpermission/views.py
+dafpermission/migrations/0001_initial.py
+dafpermission/migrations/__init__.py
+dafpermission.egg-info/PKG-INFO
+dafpermission.egg-info/SOURCES.txt
+dafpermission.egg-info/dependency_links.txt
+dafpermission.egg-info/top_level.txt

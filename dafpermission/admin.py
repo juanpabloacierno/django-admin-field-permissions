@@ -2,17 +2,17 @@ from django.contrib import admin
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.admin.utils import unquote
 from django.contrib.auth.models import User, Group, Permission
-from dafpermissions.models import get_model_fields
-from dafpermissions.models import Perfil,  CampoPermiso
+from dafpermission.models import get_model_fields
+from dafpermission.models import Perfil,  CampoPermiso
 from django.contrib import admin
-from dafpermissions.models import Perfil
+from dafpermission.models import Perfil
 from django.contrib.auth.models import Group, Permission
 
 def get_user_profile(user):
-    dafpermissions = Perfil.objects.all()
+    dafpermission = Perfil.objects.all()
     perms = user.get_all_permissions()
-    for perfil in dafpermissions:
-        if 'dafpermissions.'+ perfil.slug in perms:
+    for perfil in dafpermission:
+        if 'dafpermission.'+ perfil.slug in perms:
             return perfil.slug
 
 def filter_fieldsets(model_admin, user_fields):

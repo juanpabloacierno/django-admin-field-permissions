@@ -1,8 +1,8 @@
 Metadata-Version: 1.1
-Name: django-admin-field-permissions
-Version: 0.2
+Name: dafpermission 
+Version: b0.3
 Summary: A simple Django app to conduct Web-based polls.
-Home-page: https://www.mpf.gov.ar/
+Home-page: https://mandinga.com.ar/
 Author: ['Ismael Bejarano', 'Ezequiel Aurtenechea', 'Ezequiel Cascardo']
 Author-email: mail@example.com
 License: BSD License
