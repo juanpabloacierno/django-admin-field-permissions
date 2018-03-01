@@ -1,5 +1,5 @@
 =====
-django-admin-field-permissions
+dafpermission
 =====
 
 Django Admin Field Permmissions is a simple Django app to create profiles of field based permissions including hide read-only and read & write. Then you could associate profiles to groups or users.
