@@ -33,4 +33,5 @@ Quick start
    to create per field permissions profiles.
 
 as dependency in requirements:
--e git+http://github.com/ezenechea/dafpermission.git#egg=dafpermission
+
+`-e git+http://github.com/ezenechea/dafpermission.git#egg=dafpermission`
