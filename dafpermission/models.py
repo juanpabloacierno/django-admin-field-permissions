@@ -43,7 +43,7 @@ pre_delete.connect(perfil_cleanup, sender=Perfil)
 
 
 class CampoPermiso(models.Model):
-    perfil = models.ForeignKey(Perfil, related_name="campos", blank=True, null=True)
+    perfil = models.ForeignKey(Perfil, related_name="campos", blank=True, null=True, on_delete=models.PROTECT)
     tabla = models.CharField(max_length=300, verbose_name=u"Tabla", blank=True, null=True)
     campo = models.CharField(max_length=300, verbose_name=u"Campo", blank=True, null=True)
     permiso = models.CharField(max_length=1, verbose_name=u"Permiso",
